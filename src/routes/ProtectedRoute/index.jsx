@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { getUserRole } from "../../services/user/user.profile.service";
-import ROUTES_PATH from "../../routes/routes.constants";
+import ROUTES_PATH from "../routes.constants";
 function RoleGuard({ allowedRoles, Component, FallbackComponent }) {
   const role = getUserRole();
   if (!role) {
