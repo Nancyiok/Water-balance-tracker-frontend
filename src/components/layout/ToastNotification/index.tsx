@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import { THEME, TOAST_VARIANTS } from "./constants";
 import "./index.css";
-import { type ToastNotificationProps } from "../../hooks/useToast/types";
+import { type ToastNotificationProps } from "@/hooks/useToast/types";
 
 export function ToastNotification({
   header,

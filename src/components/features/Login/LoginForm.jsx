@@ -1,8 +1,8 @@
-import Form from "../../componens/Form/";
+import {Form} from ""
 import PasswordInput from "../PasswordInput";
 import FormInputValidation from "../FormInputValidation";
-import { login, passVerification } from "../../services/auth/auth.service";
-import { useNavigate } from "react-router-dom";
+import { login } from "../../services/auth/auth.service";
+// import { useNavigate } from "react-router-dom";
 import { useFormContext } from "react-hook-form";
 import ROUTES_PATH from "../../routes/routes.constants";
 import { BUTTONS_VARIANTS } from "../Button/constants";
@@ -12,8 +12,6 @@ import { useEffect } from "react";
 import { LOGIN_FIELS_VALIDATION } from "../../constants/forms/logInValidationRules";
 
 function LoginForm() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const methods = useFormContext();
   const {
     formState: { isValid, isSubmitting },
@@ -36,12 +34,7 @@ function LoginForm() {
       const { email, password } = data;
       const result = await login(email, password);
       const userInfo = result.data.user;
-      if (!userInfo.isVerified) {
-        const passUserVerification = await passVerification();
-      }
-      dispatch(changeInfo(userInfo));
       successToast("You have logged in successfully!");
-      navigate(ROUTES_PATH.dashboard, { replace: true });
     } catch (err) {
       setError(LOGIN_FIELS_VALIDATION.submit);
     }

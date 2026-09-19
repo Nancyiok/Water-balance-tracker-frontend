@@ -7,7 +7,7 @@ type Props = {
     children: ReactNode
 }
 
-function Form({header, onSubmit, children = null}: Props) {
+export function Form({header, onSubmit, children = null}: Props) {
     const {handleSubmit} = useFormContext();
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -17,4 +17,4 @@ function Form({header, onSubmit, children = null}: Props) {
     );
 }
 
-export default Form;
+

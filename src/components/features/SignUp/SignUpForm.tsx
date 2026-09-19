@@ -1,11 +1,11 @@
-import Form from "../Form";
-import PasswordInput from "../PasswordInput";
-import FormInputValidation from "../FormInputValidation";
+import { Form } from "@/components/primitives/Form";
+import PasswordInput from "@/components/primitives/Input/PasswordInput";
+import FormInputValidation from "@/validations/FormInputValidation";
 import { useFormContext } from "react-hook-form";
-import { BUTTONS_VARIANTS } from "../Button/constants";
-import { Button } from "../../primitives/Button";
-import { SIGN_UP_VALIDATION_FIELDS } from "../../constants/forms/signUpValidationRules";
-function SignUpForm({ sendData }) {
+import { Button } from "@/components/primitives/Button";
+import { SIGN_UP_VALIDATION_FIELDS } from "@/validations/constants/signUpValidationRules";
+
+export function SignUpForm() {
   const methods = useFormContext();
   const {
     formState: { isValid },
@@ -13,26 +13,25 @@ function SignUpForm({ sendData }) {
 
   const submitForm = async () => {
     const formData = methods.getValues();
-    sendData(formData);
   };
 
   return (
     <>
-      <Form name="Signup" onSubmit={submitForm}>
+      <Form header="Signup" onSubmit={submitForm}>
         <FormInputValidation
           name={SIGN_UP_VALIDATION_FIELDS.email}
           type={SIGN_UP_VALIDATION_FIELDS.email}
           label={"Email"}
           placeholder={"Enter email"}
         />
-        <PasswordInput
+        {/* <PasswordInput
           name={SIGN_UP_VALIDATION_FIELDS.password}
           label={"Password"}
         />
         <PasswordInput
           name={SIGN_UP_VALIDATION_FIELDS.confirmPassword}
           label={"Confirm password"}
-        />
+        /> */}
         <Button
           type="submit"
           disabled={!isValid}

@@ -2,26 +2,18 @@ import { centerElementsOnPage } from "../index.module.scss";
 import { useState } from "react";
 import { useValidationMethodsForm } from "../../utils/FormValidationIntegrate";
 import { schema } from "../../validations/signUpValidation";
-import { FormProvider, useFormState } from "react-hook-form";
-import ChooseRole from "../../componens/ChooseRole";
+import { FormProvider } from "react-hook-form";
 import SignUpForm from "../../componens/SignUpForm";
-import ROUTES_PATH from "../../routes/routes.constants";
-import AuthRedirectLink from "../../componens/AuthRedirectLink";
-function SignUpPage() {
-  const [data, setData] = useState(null);
+import ROUTES_PATH from "../../../routes/routes.constants";
+// import AuthRedirectLink from "../../componens/AuthRedirectLink";
+
+export function SignUpPage() {
   const methods = useValidationMethodsForm(schema);
-  if (data) {
-    return (
-      <div className={centerElementsOnPage}>
-        <ChooseRole receivedData={data} setData={setData} />
-      </div>
-    );
-  }
 
   return (
     <div className={centerElementsOnPage}>
       <FormProvider {...methods}>
-        <SignUpForm sendData={setData} />
+        <SignUpForm />
       </FormProvider>
       <AuthRedirectLink
         route={ROUTES_PATH.loginPage}
@@ -31,4 +23,3 @@ function SignUpPage() {
     </div>
   );
 }
-export default SignUpPage;
